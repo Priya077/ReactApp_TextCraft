@@ -3,27 +3,30 @@ import Axios from 'axios';
 
 export default function TextForm(props) {
     const [text, setText] = useState("");
-    const [searchWord, setSearchWord] = useState("");
-    const [result, setResult] = useState("");
+    //const [searchWord, setSearchWord] = useState("");
+    //const [result, setResult] = useState("");
 
     const handleOnChange = (event) => {
         setText(event.target.value);
-        setSearchWord(event.target.value);
-        setResult(event.target.value);
+        
     }
 
     const handleUpClick = () => {
         let newText = text.toUpperCase();
         setText(newText);
-        setResult(newText);
+        
     }
 
     const handleLowClick = () => {
         let newText = text.toLowerCase();
         setText(newText);
-        setResult(newText);
+        
     }
 
+    const handleClear = () => {
+        setText("");
+
+    }
     const countLength = () => {
         const arr = text.trim().split(' ');
         const len = arr.length;
@@ -35,24 +38,24 @@ export default function TextForm(props) {
 
     const handleMeaning = async () => {
         try {
-            const response = await Axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchWord}`);
+            const response = await Axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${text}`);
             if (response.data && response.data[0]) {
                 const meaning = response.data[0].meanings?.[0]?.definitions?.[0]?.definition;
                 if (meaning) {
-                    setSearchWord(meaning);
-                    setResult(meaning);
+                    setText(meaning);
+                    
                 } else {
-                    setSearchWord("Definition not found.");
-                    setResult("Definition not found.");
+                    setText("Definition not found.");
+                    
                 }
             } else {
-                setSearchWord("Definition not found.");
-                setResult("Definition not found.");
+                setText("Definition not found.");
+               
             }
         } catch (error) {
             console.error("Error fetching the meaning:", error);
-            setSearchWord("Error fetching the meaning.");
-            setResult("Error fetching the meaning.");
+            setText("Error fetching the meaning.");
+            
 
         }
     }
@@ -66,7 +69,7 @@ export default function TextForm(props) {
                         className="form-control"
                         id="exampleFormControlTextarea1"
                         rows="10"
-                        value={result}
+                        value={text}
                         onChange={handleOnChange}
                         placeholder="Enter your text here...">
                     </textarea>
@@ -80,14 +83,18 @@ export default function TextForm(props) {
                 <button type="button" className="btn btn-outline-primary mx-3" onClick={handleMeaning}>
                     Search Meaning
                 </button>
+                <button type="button" className="btn btn-outline-primary mx-3" onClick={handleClear}>
+                    Clear
+                </button>
             </div>
             <div className="container my-5">
                 <h3>Text Summary: </h3>
                 <p>No of Words: {countLength()}<br />
                     No of characters: {text.length}
                 </p>
+                {/*
                 <h3>Preview</h3>
-                <p>Your text is: {result}</p>
+                <p>Your text is: {result}</p>*/}
             </div>
         </>
     )

@@ -16,10 +16,10 @@ export default function Navbar(props) {
                         <a className="nav-link" href="/">About</a>
                     </li>
                 </ul>
-                <form className="d-flex" role="search">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button className="btn btn-outline-primary" type="submit">Search</button>
-                </form>
+                {/*<form className="d-flex" role="search">*/}
+                {/*    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />*/}
+                {/*    <button className="btn btn-outline-primary" type="submit">Search</button>*/}
+                {/*</form>*/}
             </div>
         </div>
     </nav >
