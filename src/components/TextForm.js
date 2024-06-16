@@ -27,6 +27,13 @@ export default function TextForm(props) {
         setText("");
 
     }
+
+    const handleCopy = () => {
+        var newText = document.getElementById("myText");
+        newText.select();
+        navigator.clipboard.writeText(newText.value);
+    }
+
     const countLength = () => {
         const arr = text.trim().split(' ');
         const len = arr.length;
@@ -67,7 +74,7 @@ export default function TextForm(props) {
                     <h2>{props.heading}</h2>
                     <textarea
                         className="form-control"
-                        id="exampleFormControlTextarea1"
+                        id="myText"
                         rows="10"
                         value={text}
                         onChange={handleOnChange}
@@ -82,6 +89,9 @@ export default function TextForm(props) {
                 </button>
                 <button type="button" className="btn btn-outline-primary mx-3" onClick={handleMeaning}>
                     Search Meaning
+                </button>
+                <button type="button" className="btn btn-outline-primary mx-3" onClick={handleCopy}>
+                    Copy Text
                 </button>
                 <button type="button" className="btn btn-outline-primary mx-3" onClick={handleClear}>
                     Clear
