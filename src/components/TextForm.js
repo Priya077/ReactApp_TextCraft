@@ -69,11 +69,16 @@ export default function TextForm(props) {
 
     return (
         <>
-            <div className="container my-3">
-                <div className="mb-3">
+            <div className="container my-4" style={{
+                color: props.mode === 'light' ? 'black' : 'white'
+            }}>
+                <div className="mb-3" >
                     <h2>{props.heading}</h2>
                     <textarea
-                        className="form-control"
+                        className="form-control my-4" style={{
+                            backgroundColor: props.mode === 'light' ? 'white' : 'grey',
+                            color: props.mode === 'light' ? 'black' : 'white'
+                        }}
                         id="myText"
                         rows="10"
                         value={text}
@@ -97,8 +102,8 @@ export default function TextForm(props) {
                     Clear
                 </button>
             </div>
-            <div className="container my-5">
-                <h3>Text Summary: </h3>
+            <div className="container my-5" style={{ color: props.mode === 'light' ? 'black' : 'white' }}>
+                <h3>Text Summary: </h3><br/>
                 <p>No of Words: {countLength()}<br />
                     No of characters: {text.length}
                 </p>
