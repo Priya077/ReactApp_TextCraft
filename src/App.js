@@ -8,10 +8,10 @@ import './App.css';
 
 function App() {
     return (
-      <div>
+      <>
       <Navbar title="TextUtility"></Navbar>
       <TextForm heading="Convert to UpperCase"></TextForm>
-      </div >
+      </>
   );
 }
 
