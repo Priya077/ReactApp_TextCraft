@@ -6,6 +6,7 @@ export default function TextForm(props) {
     //const [searchWord, setSearchWord] = useState("");
     //const [result, setResult] = useState("");
 
+
     const handleOnChange = (event) => {
         setText(event.target.value);
         
@@ -86,7 +87,8 @@ export default function TextForm(props) {
                         placeholder="Enter your text here...">
                     </textarea>
                 </div>
-                <button type="button" className="btn btn-outline-primary mx-3" onClick={handleUpClick}>
+                
+                <button type="button" className="btn btn-outline-primary mx-3" onClick={handleUpClick} >
                     Convert To Upper Case
                 </button>
                 <button type="button" className="btn btn-outline-primary mx-3" onClick={handleLowClick}>
@@ -104,12 +106,11 @@ export default function TextForm(props) {
             </div>
             <div className="container my-5" style={{ color: props.mode === 'light' ? 'black' : 'white' }}>
                 <h3>Text Summary: </h3><br/>
-                <p>No of Words: {countLength()}<br />
+                    <p>No of Words: {countLength()}<br />
                     No of characters: {text.length}
-                </p>
-                {/*
+                    </p>
                 <h3>Preview</h3>
-                <p>Your text is: {result}</p>*/}
+                    <p>{text}</p>
             </div>
         </>
     )
