@@ -36,6 +36,12 @@ export default function TextForm(props) {
         props.showAlert('Copied to clipboard!', 'success');
     }
 
+    const handleSpeak = () => {
+        let msg = new SpeechSynthesisUtterance();
+        msg.text = text;
+        window.speechSynthesis.speak(msg);
+    }
+
     const countLength = () => {
         const arr = text.trim().split(' ');
         const len = arr.length;
@@ -97,6 +103,9 @@ export default function TextForm(props) {
                 </button>
                 <button type="button" className="btn btn-outline-primary mx-3" onClick={handleMeaning}>
                     Search Meaning
+                </button>
+                <button type="button" className="btn btn-outline-primary mx-3" onClick={handleSpeak}>
+                    Read
                 </button>
                 <button type="button" className="btn btn-outline-primary mx-3" onClick={handleCopy}>
                     Copy Text
