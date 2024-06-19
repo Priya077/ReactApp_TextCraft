@@ -15,24 +15,25 @@ export default function TextForm(props) {
     const handleUpClick = () => {
         let newText = text.toUpperCase();
         setText(newText);
-        
+        props.showAlert('Converted to Upper case!', 'success');
     }
 
     const handleLowClick = () => {
         let newText = text.toLowerCase();
         setText(newText);
-        
+        props.showAlert('Converted to Lower case!', 'success');
     }
 
     const handleClear = () => {
         setText("");
-
+        props.showAlert('Cleared text!', 'success');
     }
 
     const handleCopy = () => {
         var newText = document.getElementById("myText");
         newText.select();
         navigator.clipboard.writeText(newText.value);
+        props.showAlert('Copied to clipboard!', 'success');
     }
 
     const countLength = () => {
@@ -51,19 +52,19 @@ export default function TextForm(props) {
                 const meaning = response.data[0].meanings?.[0]?.definitions?.[0]?.definition;
                 if (meaning) {
                     setText(meaning);
-                    
+                    props.showAlert('Check the meaning!', 'success');
                 } else {
                     setText("Definition not found.");
-                    
+                    props.showAlert('Not found!', 'warning');
                 }
             } else {
                 setText("Definition not found.");
-               
+                props.showAlert('Not found!', 'warning');
             }
         } catch (error) {
             console.error("Error fetching the meaning:", error);
             setText("Error fetching the meaning.");
-            
+            props.showAlert('Error while fetching the meaning!', 'warning');
 
         }
     }

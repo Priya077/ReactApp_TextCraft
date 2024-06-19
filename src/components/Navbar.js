@@ -1,4 +1,5 @@
 import React from 'react'
+
 export default function Navbar(props) {
     return (
         < nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
@@ -13,7 +14,7 @@ export default function Navbar(props) {
                         <a className="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/">About</a>
+                        <a className="nav-link" href="/about">About</a>
                     </li>
                 </ul>
                 {/*<form className="d-flex" role="search">*/}
