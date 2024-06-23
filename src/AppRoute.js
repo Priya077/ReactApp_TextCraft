@@ -7,7 +7,7 @@ export default function AppRoute({ mode, showAlert }) {
     return (
         <Router>
             <Routes>
-                <Route path="/about" element={<About />} />
+                <Route path="/about" element={<About mode={mode} />} />
                 <Route
                     path="/"
                     element={<TextForm heading="Convert to UpperCase" mode={mode} showAlert={showAlert} />}

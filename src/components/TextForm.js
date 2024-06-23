@@ -42,13 +42,9 @@ export default function TextForm(props) {
         window.speechSynthesis.speak(msg);
     }
 
-    const countLength = () => {
-        const arr = text.trim().split(' ');
-        const len = arr.length;
-        if (arr[len - 1] === "")
-            return len - 1;
-        else
-            return len;
+    const countLength = (text) => {
+        var len = text.split(" ").filter((element) => { return element.length !== 0 }).length;
+        return len;
     }
 
     const handleMeaning = async () => {
@@ -84,7 +80,7 @@ export default function TextForm(props) {
                     <h2>{props.heading}</h2>
                     <textarea
                         className="form-control my-4" style={{
-                            backgroundColor: props.mode === 'light' ? 'white' : 'grey',
+                            backgroundColor: props.mode === 'light' ? 'white' : '#bebdd1',
                             color: props.mode === 'light' ? 'black' : 'white'
                         }}
                         id="myText"
@@ -95,32 +91,32 @@ export default function TextForm(props) {
                     </textarea>
                 </div>
                 
-                <button type="button" className="btn btn-outline-primary mx-3" onClick={handleUpClick} >
+                <button type="button" className="btn btn-outline-primary mx-1 my-1" onClick={handleUpClick} >
                     Convert To Upper Case
                 </button>
-                <button type="button" className="btn btn-outline-primary mx-3" onClick={handleLowClick}>
+                <button type="button" className="btn btn-outline-primary mx-1 my-1" onClick={handleLowClick}>
                     Convert To Lower Case
                 </button>
-                <button type="button" className="btn btn-outline-primary mx-3" onClick={handleMeaning}>
+                <button type="button" className="btn btn-outline-primary mx-1 my-1" onClick={handleMeaning}>
                     Search Meaning
                 </button>
-                <button type="button" className="btn btn-outline-primary mx-3" onClick={handleSpeak}>
+                <button type="button" className="btn btn-outline-primary mx-1 my-1" onClick={handleSpeak}>
                     Read
                 </button>
-                <button type="button" className="btn btn-outline-primary mx-3" onClick={handleCopy}>
+                <button type="button" className="btn btn-outline-primary mx-1 my-1" onClick={handleCopy}>
                     Copy Text
                 </button>
-                <button type="button" className="btn btn-outline-primary mx-3" onClick={handleClear}>
+                <button type="button" className="btn btn-outline-primary mx-1 my-1" onClick={handleClear}>
                     Clear
                 </button>
             </div>
             <div className="container my-5" style={{ color: props.mode === 'light' ? 'black' : 'white' }}>
                 <h3>Text Summary: </h3><br/>
-                    <p>No of Words: {countLength()}<br />
+                    <p>No of Words: {countLength(text)}<br />
                     No of characters: {text.length}
                     </p>
                 <h3>Preview</h3>
-                    <p>{text}</p>
+                    <p>{text.length===0?"Enter something to see the preview...":text}</p>
             </div>
         </>
     )
