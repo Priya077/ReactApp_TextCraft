@@ -43,7 +43,7 @@ export default function TextForm(props) {
     }
 
     const countLength = (text) => {
-        var len = text.split(" ").filter((element) => { return element.length !== 0 }).length;
+        var len = text.split(/\s+/).filter((element) => { return element.length !== 0 }).length;
         return len;
     }
 
